@@ -13,6 +13,7 @@
         :href="item.url"
         target="_blank"
         height="120"
+        color="green"
         hover
       >
         <v-card-title>{{ item.title }}</v-card-title>

@@ -44,16 +44,24 @@
         <v-icon>mdi-github</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-content>
+    <v-main>
       <v-container>
         <nuxt />
       </v-container>
-    </v-content>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }} gen-of-miracles</span>
+    </v-main>
+    <v-footer padless>
+      <v-row
+        align="center"
+        justify="center"
+      >
+        <v-col cols="12">
+          <v-img
+            src="/images/footer.png"
+            max-width="300px"
+          />
+        </v-col>
+        <v-text>&copy; {{ new Date().getFullYear() }} gen-of-miracles</v-text>
+      </v-row>
     </v-footer>
   </v-app>
 </template>
@@ -72,9 +80,19 @@ export default {
           to: '/'
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          icon: 'mdi-information',
+          title: 'About',
+          to: '/about'
+        },
+        {
+          icon: 'mdi-account-multiple',
+          title: 'Member',
+          to: '/member'
+        },
+        {
+          icon: 'mdi-history',
+          title: 'History',
+          to: '/history'
         }
       ],
       miniVariant: false,
