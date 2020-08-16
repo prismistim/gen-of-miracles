@@ -21,16 +21,15 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
 import ReactionItem from '@/components/ReactionItem.vue'
-const d : reactionData = require('@/assets/reactions.json')
 
 interface Reaction {
   name: string,
   description: string
 }
 
-interface reactionData {
+interface ReactionData {
   [key: string]: Array<Reaction>
 }
 
@@ -38,9 +37,10 @@ export default Vue.extend({
   components: {
     'reaction-item': ReactionItem
   },
-  data () {
-    return {
-      reactions: d[1]
+  props: {
+    reactions: {
+      type: Object as PropType<ReactionData>,
+      required: true
     }
   }
 })

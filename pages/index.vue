@@ -21,15 +21,24 @@
       </div>
     </div>
     <special-cards />
+    <v-divider />
+    <reactions :reactions="reactionsData" />
   </v-container>
 </template>
 
 <script>
+import Vue from 'vue'
 import SpecialCards from '@/components/SpecialCards.vue'
+import Reactions from '@/components/Reactions.vue'
+import reactionsDataJson from '@/assets/reactions.json'
 
-export default {
+export default Vue.extend({
   components: {
-    SpecialCards
+    SpecialCards,
+    Reactions
+  },
+  computed: {
+    reactionsData: () => reactionsDataJson.index
   }
-}
+})
 </script>
