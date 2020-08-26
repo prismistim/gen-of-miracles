@@ -1,14 +1,18 @@
 <template>
-  <v-container fluid>
-    <div>
-      <div class="text-h3 text-center mb-2">
-        周囲の反応
-      </div>
-      <div class="text-body-1 text-center">
-        奇跡の世代の活動は様々な場所で反響を呼び、その都度高い評価をいただいております。
-        その反応の一部を掲載させていただきます。
-      </div>
-    </div>
+  <div>
+    <v-row>
+      <v-col cols="12">
+        <div class="text-h3 mb-2">
+          Reactions
+        </div>
+      </v-col>
+      <v-col cols="12">
+        <div class="text-body-1">
+          奇跡の世代の活動は様々な場所で反響を呼び、その都度高い評価をいただいております。
+          その反応の一部を掲載させていただきます。
+        </div>
+      </v-col>
+    </v-row>
     <v-row>
       <reaction-item
         v-for="item in reactions"
@@ -17,7 +21,7 @@
         :description="item.description"
       />
     </v-row>
-  </v-container>
+  </div>
 </template>
 
 <script lang="ts">
