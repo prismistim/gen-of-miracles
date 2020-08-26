@@ -1,30 +1,27 @@
 <template>
-  <v-row justify="center">
-    <v-col
-      v-for="item in items"
-      :key="item.title"
-      cols="12"
-      lg="4"
-      md="6"
-      sm="12"
-      xs="12"
-    >
-      <v-card
-        :href="item.url"
-        target="_blank"
-        height="120"
-        color="green"
-        hover
-      >
-        <v-card-title>{{ item.title }}</v-card-title>
-        <v-card-text>{{ item.description }}</v-card-text>
-      </v-card>
-    </v-col>
-  </v-row>
+  <div>
+    <v-row>
+      <v-col cols="12">
+        <div class="text-h3">
+          Special
+        </div>
+      </v-col>
+    </v-row>
+    <v-row justify="center">
+      <SpecialCardItem
+        v-for="item in items"
+        :key="item.title"
+        :url="item.url"
+        :title="item.title"
+        :description="item.description"
+      />
+    </v-row>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import SpecialCardItem from '@/components/SpecialCardItem.vue'
 
 interface Items {
   title: string,
@@ -37,6 +34,9 @@ interface Data {
 }
 
 export default Vue.extend({
+  components: {
+    SpecialCardItem
+  },
   data (): Data {
     return {
       items: [
