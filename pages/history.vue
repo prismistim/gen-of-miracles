@@ -1,6 +1,18 @@
 <template>
-  <div>
-    <v-timeline>
+  <v-container>
+    <v-row>
+      <v-col cols="12">
+        <div class="text-h3">
+          History
+        </div>
+      </v-col>
+      <v-col cols="12">
+        奇跡の世代がこれまでに歩んできた歴史を紹介します。
+      </v-col>
+    </v-row>
+    <v-timeline
+      dense
+    >
       <v-timeline-item
         v-for="item in historyData"
         :key="item.date"
@@ -10,18 +22,26 @@
             {{ item.date }}
           </v-card-subtitle>
           <v-card-text>
-            <div
+            <v-card
               v-for="event in item.topic"
               :key="event.summary"
+              style="margin-bottom: 10px"
+              outlined
             >
-              {{ event.text }}<br>
-              {{ event.summary }}
-            </div>
+              <v-card-title>
+                {{ event.summary }}
+              </v-card-title>
+              <v-card-text class="text--primary">
+                <div>
+                  {{ event.text }}
+                </div>
+              </v-card-text>
+            </v-card>
           </v-card-text>
         </v-card>
       </v-timeline-item>
     </v-timeline>
-  </div>
+  </v-container>
 </template>
 
 <script lang="ts">

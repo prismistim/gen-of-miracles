@@ -22,6 +22,25 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+        <v-list-group
+          prepend-icon="mdi-account-multiple"
+          no-action
+        >
+          <template v-slot:activator>
+            <v-list-item-title>Member</v-list-item-title>
+          </template>
+          <v-list-item
+            v-for="(member, i) in members"
+            :key="i"
+            :to="member.to"
+            router
+            exact
+          >
+            <v-list-item-content>
+              <v-list-item-title v-text="member.name" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-group>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
@@ -45,9 +64,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
+      <nuxt />
     </v-main>
     <v-footer padless>
       <v-row
@@ -70,6 +87,7 @@
 export default {
   data () {
     return {
+      is_darked: false,
       clipped: false,
       drawer: false,
       fixed: false,
@@ -85,27 +103,36 @@ export default {
           to: '/about'
         },
         {
-          icon: 'mdi-account-multiple',
-          title: 'Member',
-          to: '/member'
-        },
-        {
           icon: 'mdi-history',
           title: 'History',
           to: '/history'
         }
       ],
+      members: [
+        {
+          name: 'SOMA',
+          to: '/member/soma'
+        },
+        {
+          name: 'TNK',
+          to: '/member/tnk'
+        },
+        {
+          name: 'MizukiCom',
+          to: '/member/mizukicom'
+        },
+        {
+          name: 'Wakame-Chan',
+          to: '/member/wakame'
+        }
+      ],
       miniVariant: false,
       title: '奇跡の世代'
     }
+  },
+  mounted () {
+    this.is_darked = window.matchMedia('(prefers-color-scheme: dark)').matches
+    this.$vuetify.theme.dark = this.is_darked
   }
 }
 </script>
-
-<style>
-/* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&display=swap');
-
-.v-application {
-  font-family: "Noto Serif JP", serif;
-} */
-</style>

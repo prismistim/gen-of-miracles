@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container>
     <v-row>
       <v-col sm="12">
         <v-card
@@ -12,25 +12,16 @@
         </v-card>
       </v-col>
     </v-row>
-    <div class="mb-2">
-      <div class="text-h2 text-center mb-2">
-        Welcome to "奇跡の世代"
-      </div>
-      <div class="text-subtitle-1 text-center">
-        今まで数々の奇跡を起こしてきた4人の戦士による特設サイトです
-      </div>
-    </div>
     <special-cards />
     <v-divider />
     <reactions :reactions="reactionsData" />
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import Vue from 'vue'
 import SpecialCards from '@/components/SpecialCards.vue'
 import Reactions from '@/components/Reactions.vue'
-import reactionsDataJson from '@/assets/reactions.json'
 
 export default Vue.extend({
   components: {
@@ -38,7 +29,7 @@ export default Vue.extend({
     Reactions
   },
   computed: {
-    reactionsData: () => reactionsDataJson.index
+    reactionsData: () => require('@/assets/reactions.json').index
   }
 })
 </script>
